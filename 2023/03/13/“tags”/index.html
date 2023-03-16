@@ -39,11 +39,11 @@
 <meta property="og:title" content="花落熙">
 <meta property="og:url" content="https://abcdeaa.github.io/2023/03/13/%E2%80%9Ctags%E2%80%9D/index.html">
 <meta property="og:site_name" content="花落熙">
-<meta property="og:description" content="知识海洋！！！">
+<meta property="og:description" content="怪异盒模型介绍一下标准的 CSS 的盒子模型？低版本 IE 的盒子模型有什么不同的？ （1）有两种盒子模型：IE 盒模型（border-box）、W3C 标准盒模型（content-box）  （2）盒模型：分为内容（content）、填充（padding）、边界（margin）、边框（border）四个 部分 IE 盒模型和 W3C 标准盒模型的区别:（1）W3C 标准盒模型：属性 width，">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2023-03-13T08:24:00.891Z">
-<meta property="article:modified_time" content="2023-03-16T12:17:47.989Z">
+<meta property="article:modified_time" content="2023-03-16T13:21:03.717Z">
 <meta property="article:author" content="aiLixiao">
 <meta property="article:tag" content="Vue、JavaScript、小程序、门户网站开发等其他">
 <meta name="twitter:card" content="summary">
@@ -1627,7 +1627,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1678969539428),
+    lastupdate: new Date(1678972895187),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate","text"],
       for_post: ["toc"],
@@ -2446,7 +2446,29 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    
+    <h2 id="怪异盒模型"><a href="#怪异盒模型" class="headerlink" title="怪异盒模型"></a>怪异盒模型</h2><p>介绍一下标准的 CSS 的盒子模型？低版本 IE 的盒子模型有什么不同的？</p>
+<p>（1）有两种盒子模型：IE 盒模型（border-box）、W3C 标准盒模型（content-box） </p>
+<p>（2）盒模型：分为内容（content）、填充（padding）、边界（margin）、边框（border）四个 部分</p>
+<h4 id="IE-盒模型和-W3C-标准盒模型的区别"><a href="#IE-盒模型和-W3C-标准盒模型的区别" class="headerlink" title="IE 盒模型和 W3C 标准盒模型的区别:"></a>IE 盒模型和 W3C 标准盒模型的区别:</h4><p>（1）W3C 标准盒模型：属性 width，height 只包含内容 content，不包含 border 和 padding </p>
+<p>（2）IE 盒模型：属性 width，height 包含 content、border 和 padding，指的是 content +padding+border。</p>
+<p>​    在 ie8+浏览器中使用哪个盒模型可以由 box-sizing（CSS 新增的属性）控制，默认值为 content-box，即标准盒模型；</p>
+<p>​     如果将 box-sizing 设为 border-box 则用的是 IE 盒模型。如果在 ie6，7，8 中 DOCTYPE 缺失会 将盒子模型解释为 IE</p>
+<p>​     盒子模型,若在页面中声明了 DOCTYPE 类型，所有的浏览器都会把盒模型解释为 W3C 盒模 型。 </p>
+<p>​    回答： 盒模型都是由四个部分组成的，分别是 margin、border、padding 和 content。</p>
+<p>​     标准盒模型和 IE 盒模型的区别在于设置 width 和 height 时，所对应的范围不同。标准盒模 型的 width 和 height 属性的 范围只包含了 content，而 IE 盒模型的 width 和 height 属性的范围包含了 border、padding 和 content。 </p>
+<p>​    一般来说，我们可以通过修改元素的 box-sizing 属性来改变元素的盒模型</p>
+<h2 id="扫描二维码登录网页原理"><a href="#扫描二维码登录网页原理" class="headerlink" title="扫描二维码登录网页原理"></a>扫描二维码登录网页原理</h2><p>核心过程应该是：浏览器获得一个临时 id，通过长连接等待客户端扫描带有此 id 的二维 码后，从长连接中获得客户端上报给 server 的帐号信息进行展示。并在客户端点击确认后， 获得服务器授信的令牌，进行随后的信息交互过程。在超时、网络断开、其他设备上登录后， 此前获得的令牌或丢失、或失效，对授权过程形成有效的安全防护。</p>
+<pre><code> 我的理解二维码登录网页的基本原理是，用户进入登录网页后，服务器生成一个 uid 来标 识一个用户。对应的二维码对应了一个对应 uid 的链接，任何能够识别二维码的应用都可 以获得这个链接，但是它们没有办法和对应登录的服务器响应。比如微信的二维码登录，只 有用微信识这个二维码才有效。当微信客户端打开这个链接时，对应的登录服务器就获得了 用户的相关信息。这个时候登录网页根据先前的长连接获取到服务器传过来的用户信息进行 显示。然后提前预加载一些登录后可能用到的信息。当客户端点击确认授权登陆后，服务器 生成一个权限令牌给网页，网页之后使用这个令牌进行信息的交互过程。由于整个授权的过 程都是在手机端进行的，因此能够很好的防止 PC 上泛滥的病毒。并且在超时、网络断开、 其他设备上登录后，此前获得的令牌或丢失、或失效，对授权过程能够形成有效的安全防护。
+</code></pre>
+<h2 id="实现不使用border画出1px高的线，在不同的浏览器标准模式和怪异模式下保持一致"><a href="#实现不使用border画出1px高的线，在不同的浏览器标准模式和怪异模式下保持一致" class="headerlink" title="实现不使用border画出1px高的线，在不同的浏览器标准模式和怪异模式下保持一致"></a>实现不使用border画出1px高的线，在不同的浏览器标准模式和怪异模式下保持一致</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">div</span> style=&quot;<span class="attribute">height</span>:<span class="number">1px</span>;<span class="attribute">overflow</span>:hidden;<span class="attribute">background</span>:red<span class="string">&quot;&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
   </div>
   
   
@@ -2470,7 +2492,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-03-16T20:17:47+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-03-16T21:21:03+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Mar 16, 2023</p>
@@ -2552,8 +2574,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='next' href='/2023/03/13/%E2%80%9Cabout%E2%80%9D/'>
           <p class='title'>Mar 13, 2023<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>vue教程
-什么是 Vue？Vue (发音为 /vjuː/，类似 view) 是一款用于构建用户界面的 JavaScript 框架。它基于标准 HTML、CSS 和 JavaScript 构建，...</p>
+          <p class='content'>1Vue教程
+
+教程
+什么是 Vue？Vue (发音为 /vjuː/，类似 view) 是一款用于构建用户界面的 JavaScript 框架。它基于标准 HTML、CSS 和 JavaScrip...</p>
         </a>
       
     </div>
@@ -2601,9 +2625,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
 
 
-  <div class="">
-    <!-- pjax占位 -->
-  </div>
+  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
+    
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%AA%E5%BC%82%E7%9B%92%E6%A8%A1%E5%9E%8B"><span class="toc-text">怪异盒模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#IE-%E7%9B%92%E6%A8%A1%E5%9E%8B%E5%92%8C-W3C-%E6%A0%87%E5%87%86%E7%9B%92%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">IE 盒模型和 W3C 标准盒模型的区别:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%AB%E6%8F%8F%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%99%BB%E5%BD%95%E7%BD%91%E9%A1%B5%E5%8E%9F%E7%90%86"><span class="toc-text">扫描二维码登录网页原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%B8%8D%E4%BD%BF%E7%94%A8border%E7%94%BB%E5%87%BA1px%E9%AB%98%E7%9A%84%E7%BA%BF%EF%BC%8C%E5%9C%A8%E4%B8%8D%E5%90%8C%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%87%E5%87%86%E6%A8%A1%E5%BC%8F%E5%92%8C%E6%80%AA%E5%BC%82%E6%A8%A1%E5%BC%8F%E4%B8%8B%E4%BF%9D%E6%8C%81%E4%B8%80%E8%87%B4"><span class="toc-text">实现不使用border画出1px高的线，在不同的浏览器标准模式和怪异模式下保持一致</span></a></li></ol>
+    </div>
+  </section>
 
   
 
@@ -3282,7 +3316,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"花落熙","url":"https://abcdeaa.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"aiLixiao","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://abcdeaa.github.io/","sameAs":["https://github.com/volantis-x"],"description":"知识海洋！！！"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://abcdeaa.github.io/","name":"花落熙"}},{"@type":"ListItem","position":3,"item":{"@id":"https://abcdeaa.github.io/2023/03/13/“tags”/"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"花落熙","url":"https://abcdeaa.github.io/","keywords":"Vue、JavaScript、小程序、门户网站开发等其他","description":"知识海洋！！！","author":{"@type":"Person","name":"aiLixiao","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://abcdeaa.github.io/","description":"知识海洋！！！"},"publisher":{"@type":"Organization","name":"花落熙","url":"https://abcdeaa.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://abcdeaa.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"知识海洋！！！","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://abcdeaa.github.io/2023/03/13/%E2%80%9Ctags%E2%80%9D/"},"author":{"@type":"Person","name":"aiLixiao","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://abcdeaa.github.io/"},"publisher":{"@type":"Organization","name":"花落熙","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://abcdeaa.github.io/2023/03/13/%E2%80%9Ctags%E2%80%9D/","wordCount":0,"datePublished":"2023-03-13T08:24:00.891Z","dateModified":"2023-03-16T12:17:47.989Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"花落熙","url":"https://abcdeaa.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"aiLixiao","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://abcdeaa.github.io/","sameAs":["https://github.com/volantis-x"],"description":"知识海洋！！！"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://abcdeaa.github.io/","name":"花落熙"}},{"@type":"ListItem","position":3,"item":{"@id":"https://abcdeaa.github.io/2023/03/13/“tags”/"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"花落熙","url":"https://abcdeaa.github.io/","keywords":"Vue、JavaScript、小程序、门户网站开发等其他","description":"知识海洋！！！","author":{"@type":"Person","name":"aiLixiao","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://abcdeaa.github.io/","description":"知识海洋！！！"},"publisher":{"@type":"Organization","name":"花落熙","url":"https://abcdeaa.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://abcdeaa.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"知识海洋！！！","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://abcdeaa.github.io/2023/03/13/%E2%80%9Ctags%E2%80%9D/"},"author":{"@type":"Person","name":"aiLixiao","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://abcdeaa.github.io/"},"publisher":{"@type":"Organization","name":"花落熙","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://abcdeaa.github.io/2023/03/13/%E2%80%9Ctags%E2%80%9D/","wordCount":0,"datePublished":"2023-03-13T08:24:00.891Z","dateModified":"2023-03-16T13:21:03.717Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
